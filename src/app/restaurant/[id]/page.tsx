@@ -14,15 +14,15 @@ export default async function Restaurant({ params }: RestaurantProps) {
   return (
     <>
       <Container className="flex flex-col gap-6 text-black">
-        <section className="flex flex-col md:flex-row gap-6">
+        <section className="flex flex-col md:flex-row">
           <Image
-            className="rounded-md"
+            className="rounded-t-md lg:rounded-none lg:rounded-l-md"
             width={500}
             height={400}
             alt="Foto do restaurante"
             src={"/images/lounge.jpg"}
           />
-          <div className="p-4 flex gap-6 flex-col items-baseline">
+          <div className="p-4 flex gap-6 flex-col items-baseline bg-white rounded-b-md lg:rounded-none lg:rounded-r-md lg:p-8">
             <h3 className="text-xl font-bold">{restaurant.name}</h3>
             <p>{restaurant.description ? restaurant.description : "Descrição não disponível"}</p>
             <p>{restaurant.address ? restaurant.address : "Endereço não disponível"}</p>
