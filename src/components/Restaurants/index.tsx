@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IRestaurant } from "@/types/Restaurants";
 import { env } from "@/config/env";
+import { Button } from "../Button";
 
 export async function Restaurants() {
   const { data: restaurants } = await axios.get(`${env.API_URL}/restaurants/category/3`);
@@ -10,6 +11,7 @@ export async function Restaurants() {
   return (  
     <div className="text-black">
       <h2 className="text-2xl font-bold mb-8">Lista de restaurantes</h2>
+        <Button className="block mb-4" href="new" text="+ Cadastrar novo restaurante"/>
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 cursor-pointer">
         {restaurants.length ? restaurants.map((restaurant: IRestaurant) => (
           <div className="text-center bg-white rounded-md shadow-lg pb-2" key={restaurant.id}>
@@ -19,10 +21,7 @@ export async function Restaurants() {
               <p>{restaurant.description}</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
-            <Link href={`/restaurant/${restaurant.id}`}>
-              <button className="border-none font-bold bg-blue-500 text-white py-2 px-4 rounded cursor-pointer 
-              hover:bg-blue-600 delay-50 transition-colors">Conferir</button>
-            </Link>
+            <Button href={restaurant.id} text="Conferir"/>
           </div>
         )) : "Não há restaurantes cadastrados ainda."}
       </section>
